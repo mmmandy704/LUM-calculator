@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Long Unread Meter Fine Calculator</title>
+
   <style>
     body {
       margin: 0;
@@ -26,6 +27,12 @@
       background: #eaf8fc;
       padding: 28px;
       border-bottom: 1px solid #d3e7ef;
+    }
+
+    .logo {
+      height: 55px;
+      margin-bottom: 18px;
+      display: block;
     }
 
     h1 {
@@ -142,15 +149,24 @@
       h1 {
         font-size: 25px;
       }
+
+      .logo {
+        height: 45px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <div class="calculator">
     <div class="header">
+      <img src="logo.jpg" alt="Occutrace Logo" class="logo" />
+
       <h1>Long Unread Meter Fine Calculator</h1>
-      <p class="subtitle">Enter the number of long unread meters to estimate the potential fine exposure.</p>
+      <p class="subtitle">
+        Enter the number of long unread meters to estimate the potential fine exposure.
+      </p>
     </div>
 
     <div class="content">
@@ -158,9 +174,17 @@
       <input type="text" id="meters" value="15,160" />
 
       <div class="buttons">
-        <button onclick="setMode('oneYear')" id="oneYearBtn">1 year no action</button>
-        <button onclick="setMode('additional')" id="additionalBtn" class="active">18 months–2 years additional</button>
-        <button onclick="setMode('total')" id="totalBtn">Total exposure</button>
+        <button onclick="setMode('oneYear')" id="oneYearBtn">
+          1 year no action
+        </button>
+
+        <button onclick="setMode('additional')" id="additionalBtn" class="active">
+          18 months–2 years additional
+        </button>
+
+        <button onclick="setMode('total')" id="totalBtn">
+          Total exposure
+        </button>
       </div>
 
       <div class="results">
@@ -196,12 +220,14 @@
         fineTitle: "Estimated fine",
         note: "Calculation: long unread meters x £40 charge after 1 year no action."
       },
+
       additional: {
         rate: 80,
         rateTitle: "Additional rate",
         fineTitle: "Additional fine",
         note: "Calculation: long unread meters x £80 additional charge if no action after 18 months to 2 years."
       },
+
       total: {
         rate: 120,
         rateTitle: "Total rate",
@@ -225,7 +251,10 @@
     function setMode(selectedMode) {
       mode = selectedMode;
 
-      document.querySelectorAll("button").forEach(btn => btn.classList.remove("active"));
+      document.querySelectorAll("button").forEach(button => {
+        button.classList.remove("active");
+      });
+
       document.getElementById(selectedMode + "Btn").classList.add("active");
 
       calculate();
