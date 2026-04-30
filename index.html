@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Occutrace Calculator</title>
+</head>
+
+<body style="font-family:Arial; text-align:center; padding:40px;">
+
+<h1>Occutrace Long Unread Meter Calculator</h1>
+
+<p>Enter number of long unread meters:</p>
+
+<input type="number" id="meters" placeholder="e.g. 15160">
+
+<br><br>
+
+<button onclick="calculate()">Calculate</button>
+
+<p id="result"></p>
+
+<script>
+function calculate() {
+  var meters = document.getElementById("meters").value;
+
+  var year1 = meters * 40;
+  var additional = meters * 80;
+  var total = year1 + additional;
+
+  document.getElementById("result").innerHTML =
+    "Year 1 Fine: £" + year1.toLocaleString() + "<br>" +
+    "Additional Fine: £" + additional.toLocaleString() + "<br>" +
+    "<b>Total Exposure: £" + total.toLocaleString() + "</b>";
+}
+</script>
+
+</body>
+</html>
